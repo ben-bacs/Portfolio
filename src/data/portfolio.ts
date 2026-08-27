@@ -40,7 +40,7 @@ export const PORTFOLIO_DATA = {
     name: "Benedict Neil Bacud",
     firstName: "Benedict Neil",
     lastName: "Bacud",
-    title: "Backend & Full-Stack Developer",
+    title: "Full-Stack Developer | Network & Security Specialist",
     statusBadge: "AVAILABLE FOR WORK",
     subtitle: "Network & Information Security Major | Full-Stack Software Engineer",
     

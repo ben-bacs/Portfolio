@@ -47,7 +47,7 @@ export const Hero: React.FC = () => {
               {personal.heroSubtitle}
             </p>
 
-            {/* Dual CTAs & Rotating Monogram Badge Row */}
+            {/* Dual CTAs Row */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-8">
               {/* Primary Gold CTA */}
               <a
@@ -67,38 +67,6 @@ export const Hero: React.FC = () => {
                 <span>Download CV</span>
                 <Download className="w-4 h-4 text-gold" />
               </a>
-
-              {/* Rotating Circular Monogram Badge */}
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 items-center justify-center hidden sm:flex self-center">
-                {/* Rotating SVG text */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-                  className="absolute inset-0 w-full h-full"
-                >
-                  <svg viewBox="0 0 100 100" className="w-full h-full fill-current text-zinc-400">
-                    <path
-                      id="textPath"
-                      d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                      fill="none"
-                    />
-                    <text className="text-[9.5px] uppercase tracking-[2.4px] fill-zinc-400 font-medium">
-                      <textPath href="#textPath" startOffset="0%">
-                        • AVAILABLE FOR WORK • FULL STACK & BACKEND
-                      </textPath>
-                    </text>
-                  </svg>
-                </motion.div>
-
-                {/* Central Monogram Logo Image */}
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-zinc-900 border border-zinc-700/80 overflow-hidden p-0.5 flex items-center justify-center shadow-lg">
-                  <img
-                    src={personal.logoUrl}
-                    alt="BNB Monogram"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
             </div>
 
             {/* Quick Tech Badges & Location */}
