@@ -44,11 +44,11 @@ export const PORTFOLIO_DATA = {
     statusBadge: "AVAILABLE FOR WORK",
     subtitle: "Network & Information Security Major | Full-Stack Software Engineer",
     
-    // Images & Branding
-    profileImage: "/profile-hero.jpg",
-    aboutImage: "/profile.jpg",
-    logoUrl: "/logo-badge.png",
-    logoIcon: "/logo.png",
+    // Images & Branding (Relative for GitHub Pages)
+    profileImage: "./profile-hero.jpg",
+    aboutImage: "./profile.jpg",
+    logoUrl: "./logo-badge.png",
+    logoIcon: "./logo.png",
     
     // Contact Information from Business Card
     email: "benedictneilbacud@gmail.com",
@@ -59,7 +59,7 @@ export const PORTFOLIO_DATA = {
     ],
     location: "Iloilo City & Koronadal City, Philippines",
     
-    github: "https://github.com",
+    github: "https://github.com/ben-bacs",
     linkedin: "https://linkedin.com",
     cvUrl: "#",
     
@@ -106,8 +106,8 @@ export const PORTFOLIO_DATA = {
       tags: ["Laravel / MERN", "MySQL", "Tailwind CSS", "REST API"],
       techStack: ["Laravel", "React", "MySQL", "Tailwind CSS", "Redux"],
       image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com",
-      githubUrl: "https://github.com",
+      demoUrl: "https://github.com/ben-bacs",
+      githubUrl: "https://github.com/ben-bacs",
       featured: true,
     },
     {
@@ -118,8 +118,8 @@ export const PORTFOLIO_DATA = {
       tags: ["PHP / Node.js", "PostgreSQL", "JWT Auth", "RBAC"],
       techStack: ["Node.js", "Express", "PostgreSQL", "React", "Docker"],
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com",
-      githubUrl: "https://github.com",
+      demoUrl: "https://github.com/ben-bacs",
+      githubUrl: "https://github.com/ben-bacs",
       featured: true,
     },
     {
@@ -130,8 +130,8 @@ export const PORTFOLIO_DATA = {
       tags: ["PERN Stack", "TypeScript", "Supabase", "Tailwind"],
       techStack: ["PostgreSQL", "Express", "React", "Node.js", "Supabase"],
       image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com",
-      githubUrl: "https://github.com",
+      demoUrl: "https://github.com/ben-bacs",
+      githubUrl: "https://github.com/ben-bacs",
       featured: true,
     },
     {
@@ -142,8 +142,8 @@ export const PORTFOLIO_DATA = {
       tags: ["Python", "Linux Sockets", "React", "WebSockets"],
       techStack: ["Python", "AsyncIO", "Raw Sockets", "React", "Tailwind"],
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com",
-      githubUrl: "https://github.com",
+      demoUrl: "https://github.com/ben-bacs",
+      githubUrl: "https://github.com/ben-bacs",
       featured: true,
     },
   ] as Project[],
@@ -193,7 +193,7 @@ export const PORTFOLIO_DATA = {
       name: "Chris Apin",
       role: "Lead Project Manager",
       company: "Apex Tech Logistics",
-      avatar: "/Chris Apin.jpg",
+      avatar: "./Chris Apin.jpg",
       quote: "Benedict delivers exceptional backend architecture. His network security background gives us total peace of mind regarding database efficiency and API security.",
     },
     {
@@ -201,7 +201,7 @@ export const PORTFOLIO_DATA = {
       name: "Richyll Gabinera",
       role: "Operations Director",
       company: "CarePulse Health",
-      avatar: "/Richyll Gabinera.jpg",
+      avatar: "./Richyll Gabinera.jpg",
       quote: "The clinic management system Benedict architected streamlined our appointment workflows and record security. Clean code and reliable delivery.",
     },
     {
@@ -209,7 +209,7 @@ export const PORTFOLIO_DATA = {
       name: "Jaspher Ebarle",
       role: "Founder & CTO",
       company: "Veloce Auto Group",
-      avatar: "/Jaspher Ebarle.jpg",
+      avatar: "./Jaspher Ebarle.jpg",
       quote: "The car dealership platform's performance exceeded our expectations. Filters load instantaneously and the inventory dashboard is effortless to manage.",
     },
   ] as Testimonial[],
