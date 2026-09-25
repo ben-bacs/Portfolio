@@ -25,7 +25,7 @@ export const Projects: React.FC = () => {
           </div>
 
           <a
-            href="https://github.com"
+            href={PORTFOLIO_DATA.personal.github}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 text-xs sm:text-sm text-text-muted hover:text-white font-medium transition-colors self-start sm:self-auto"
@@ -35,8 +35,8 @@ export const Projects: React.FC = () => {
           </a>
         </div>
 
-        {/* 4-Card Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
           {PORTFOLIO_DATA.projects.map((project, idx) => (
             <motion.div
               key={project.id}

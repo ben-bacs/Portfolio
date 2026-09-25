@@ -207,3 +207,4 @@ npm run preview
 - **TypeScript Strict Mode**: Zero compilation errors or unused variables (`tsc -b`).
 - **Responsive Viewport Support**: Fully tested across mobile (320px–480px), tablet (768px), and desktop (1024px–1440px+).
 - **Performance**: Optimized gzip assets, lazy-loaded offscreen images, and CSS hardware-accelerated animations.
+
