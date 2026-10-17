@@ -142,7 +142,7 @@ export const About: React.FC = () => {
             <div className="mt-7 sm:mt-8 pt-5 sm:pt-6 border-t border-zinc-800/80">
               <div className="text-xs font-medium text-text-dim mb-2.5 sm:mb-3">Additional Competencies:</div>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {['Git & CI/CD', 'Docker', 'Postman API', 'Nginx Proxy', 'Supabase', 'TypeScript'].map((item) => (
+                {['Rust & Tauri 2.2', 'WebGL2 Shaders', 'Cloudflare Workers & D1', 'PostgreSQL RLS', 'Docker & CI/CD', 'SSRF & OWASP'].map((item) => (
                   <span key={item} className="text-[10px] sm:text-[11px] text-zinc-400 bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-md">
                     {item}
                   </span>

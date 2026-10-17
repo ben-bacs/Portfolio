@@ -75,13 +75,13 @@ export const Hero: React.FC = () => {
                 <MapPin className="w-3 h-3 text-gold flex-shrink-0" /> Iloilo & Koronadal City
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-300 bg-zinc-900/70 border border-zinc-800 px-2.5 py-1 rounded-md">
-                <Server className="w-3 h-3 text-gold flex-shrink-0" /> REST & Microservices
+                <Server className="w-3 h-3 text-gold flex-shrink-0" /> Java, Rust & Go Systems
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-300 bg-zinc-900/70 border border-zinc-800 px-2.5 py-1 rounded-md">
-                <ShieldCheck className="w-3 h-3 text-emerald-400 flex-shrink-0" /> CCNA & Security
+                <ShieldCheck className="w-3 h-3 text-emerald-400 flex-shrink-0" /> AppSec, RLS & CCNA
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-300 bg-zinc-900/70 border border-zinc-800 px-2.5 py-1 rounded-md">
-                <Terminal className="w-3 h-3 text-amber-400 flex-shrink-0" /> Linux Admin
+                <Terminal className="w-3 h-3 text-amber-400 flex-shrink-0" /> Linux & Edge Cloud
               </span>
             </div>
           </motion.div>

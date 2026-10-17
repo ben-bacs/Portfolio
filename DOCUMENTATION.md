@@ -118,34 +118,43 @@ Portfolio/
 - **Display Typography**: Serif italic contrast styling on high-impact keywords.
 - **Dual Action CTAs**: Primary gold button (*"View My Work"*) and secondary outlined button (*"Download CV"*).
 - **Stylized Portrait**: Framed portrait with golden ambient radial backlight and a floating glassmorphism *"Professional Identity"* badge.
-- **Focus Area Badges**: Quick pills highlighting REST APIs, CCNA Security, Linux Admin, and dual locations (Iloilo & Koronadal City).
+- **Focus Area Badges**: Quick pills highlighting Java/Rust/Go Systems, AppSec/RLS/CCNA, Linux & Edge Cloud, and dual locations (Iloilo & Koronadal City).
 - **Floating Social Rail**: Desktop-only vertical rail on the far right with GitHub, LinkedIn, and Email quick links.
 
 ### 5.3 `Projects.tsx`
-- **Responsive 4-Card Grid**:
-  1. **Alex Car Dealership** (*Commercial Dynamic Platform* - Laravel / MERN)
-  2. **Pediatric Clinic Management** (*Healthcare System & RBAC* - PHP / Node.js, PostgreSQL)
-  3. **Organization Attendance Tracker** (*Full-Stack Web App* - PERN Stack, Supabase)
-  4. **Network Subnet Scanner & Monitor** (*Security & Infrastructure* - Python, Linux Sockets, React)
-- **Interactive Detail Modal**: Clicking any card opens a modal with a high-resolution banner, complete architecture breakdown, tech badges, live preview, and source code links.
+- **Domain Filter Bar**: Interactive category filter tabs (*All*, *Backend & Systems*, *Security & Edge*, *Apps & Tooling*) with live project counts and Framer Motion layout transitions.
+- **Responsive 11-System Grid**:
+  1. **RESONA Native Audio Visualizer** (*Native Rust & WebGL2 DSP* - Rust, Tauri 2.2, WASAPI, WebGL2)
+  2. **IJWKMS Next Academic Operations** (*Modular Monolith & RBAC* - Java 25, Spring Boot 4, PostgreSQL 17, Flyway)
+  3. **Cal.com SSRF Vulnerability Defense** (*Open Source Security Research* - TypeScript, Node.js, AppSec, PR #30158)
+  4. **BENSOY Spotify Intelligence** (*Edge Analytics & Privacy* - Cloudflare Workers, D1, Drizzle ORM, AES-256-GCM)
+  5. **PCMS v2 Pediatric Clinic Management** (*Healthcare EMR & RLS* - Next.js App Router, Supabase PostgreSQL RLS)
+  6. **HeatSafe Campus Decision Support** (*Environmental Risk Analytics* - Next.js 16, React 19, Supabase, Open-Meteo)
+  7. **A.C.A.M.S. ROTC-AF Attendance System** (*Offline-First Muster Platform* - Go 1.24, PostgreSQL 16, Docker, RLS)
+  8. **Secure Service Desk API** (*ITSM Modular Monolith* - NestJS 11, PostgreSQL 17, Prisma ORM, Argon2id)
+  9. **AutoRest Sleep Tracker PWA** (*PWA & Web Audio Synthesis* - React 19, TypeScript, Web Audio API)
+  10. **BSIT 4B Academic Courseware Hub** (*Interactive Educational Platform* - React, TypeScript, Vite, 479 slides)
+  11. **A Day of Reset Wellness Journal** (*Interactive Deck & Telemetry* - React, TypeScript, PptxGenJS)
+- **Interactive Detail Modal**: Clicking any card opens a modal with a high-resolution banner, domain classification badge, bulleted engineering highlights, tech stack badges, live preview/release link, and source repository link.
 
 ### 5.4 `Services.tsx` ("What I Do")
 - 4 feature cards with circular bordered Lucide icons:
-  - **Backend Architecture & APIs**: RESTful services, JWT auth, PostgreSQL/MongoDB caching layers.
-  - **Full-Stack Development**: End-to-end applications using PERN, MERN, and Laravel stacks.
-  - **Linux & Network Systems**: Ubuntu/Debian server administration, Nginx reverse proxy, CCNA routing logic.
-  - **AI Integration & Calibration**: LLM APIs, function calling, structured outputs, and automated pipelines.
+  - **Backend & Systems Engineering**: Modular monoliths (Java 25/Spring Boot 4, Go, NestJS), native Rust/Tauri 2 apps, and PostgreSQL 17 RLS schemas.
+  - **Full-Stack & Graphics Engineering**: React 19, Next.js 16, decoupled WebGL2 shaders, Web Audio API, and Cloudflare Workers.
+  - **AppSec & Network Security**: Upstream SSRF defense, OWASP mitigations, Argon2id/BCrypt/AES-256-GCM, Linux hardening, and CCNA 1–3 networking.
+  - **Edge & Offline-First Runtimes**: Atomic filesystem persistence, Cloudflare D1 edge SQLite, offline-first muster platforms, and zero-cost PWAs.
 
 ### 5.5 `About.tsx` & Skills Matrix
-- **Narrative Bio**: Details Network & Information Security major background and passion for scalable systems.
+- **Narrative Bio**: Details Network & Information Security major background, native Rust/WASAPI and backend systems experience, and upstream open-source security contributions.
 - **Certification Badges**: Cisco CCNA 1-3 & Computer Systems Servicing (CSS NC II).
 - **Workspace Photo**: Portrait container with a floating *"Dual Certified"* glass badge.
 - **Animated Skill Progress Meters**:
-  - Backend & REST APIs — 95%
-  - Full-Stack (PERN / MERN / Laravel) — 90%
-  - Linux CLI & Server Management — 88%
-  - Relational & NoSQL Databases — 85%
-  - AI API Integration & Calibration — 80%
+  - Backend & Systems (Java 25, Rust, Go, NestJS) — 95%
+  - Database Engineering & RLS (PostgreSQL 17, Supabase, D1) — 92%
+  - Application Security & AppSec (SSRF, RBAC, OWASP) — 92%
+  - Modern Frontend & WebGL2 (React 19, Next.js 16, TS) — 90%
+  - Linux Administration, Docker & CI/CD Pipelines — 88%
+  - Network Infrastructure (Cisco CCNA 1-3 & Forensics) — 86%
 
 ### 5.6 `Testimonials.tsx`
 - 3 feedback cards showcasing real collaborators:
