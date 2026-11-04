@@ -19,7 +19,7 @@ export default function App() {
         <section className="intro" aria-labelledby="intro-heading">
           <div>
             <p className="intro-name">{personal.name}</p>
-            <h1 id="intro-heading">Curious about what makes things tick.</h1>
+            <h1 id="intro-heading">Curious about <em>what makes things tick.</em></h1>
             <p className="lede">I study IT at WVSU and build across backend systems, desktop software, and application security.</p>
             <a className="button" href="#projects">Explore my work</a>
           </div>
