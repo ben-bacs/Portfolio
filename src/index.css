@@ -1,224 +1,66 @@
-:root {
-  color-scheme: dark;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #0B0B0C;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+}
+
+/* Custom glow utility */
+.gold-glow {
+  background: radial-gradient(circle, rgba(229,195,150,0.18) 0%, rgba(0,0,0,0) 70%);
+}
+
+.gold-glow-subtle {
+  background: radial-gradient(circle, rgba(229,195,150,0.08) 0%, rgba(0,0,0,0) 65%);
+}
+
+.glass-panel {
+  background: rgba(22, 22, 24, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-pill {
+  background: rgba(24, 24, 27, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(63, 63, 70, 0.5);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
   background: #0B0B0C;
-  color: #FFFFFF;
-  font: 16px/1.65 "Plus Jakarta Sans", system-ui, sans-serif;
-  --muted: #A1A1AA;
-  --accent: #E5C396;
-  --rule: #27272A;
-  --panel: #161618;
 }
 
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: radial-gradient(ellipse 42rem 25rem at 50% 0, rgb(229 195 150 / 0.09), transparent);
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 4px;
 }
 
-::selection {
-  background: var(--accent);
-  color: #0B0B0C;
+::-webkit-scrollbar-thumb:hover {
+  background: #E5C396;
 }
 
-a {
-  color: var(--accent);
-  text-underline-offset: 0.24em;
-}
-
-a:hover { color: #fff; }
-
-a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 5px;
-}
-
-.portfolio {
-  width: min(calc(100% - 3rem), 72rem);
-  margin-inline: auto;
-}
-
-.site-header, .section-heading, .contact {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
-}
-
-.site-header {
-  padding: 1.35rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-
-.site-header nav, .project-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.7rem 1.4rem;
-}
-
-.site-header a { text-decoration: none; }
-.site-header a:hover { text-decoration: underline; }
-.wordmark { color: inherit; font-weight: 750; }
-
-.intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.8fr);
-  align-items: center;
-  gap: clamp(2rem, 7vw, 6rem);
-  padding: clamp(3rem, 8vw, 6rem) 0;
-}
-
-.intro-name, .category {
-  margin: 0 0 0.45rem;
-  color: var(--accent);
-  font-size: 0.9rem;
-  font-weight: 650;
-}
-
-h1, h2, h3 {
-  margin: 0;
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-}
-
-h1 {
-  font-size: clamp(2.75rem, 6.5vw, 5.55rem);
-  font-family: "Instrument Serif", Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
-
-h1 em { color: var(--accent); }
-
-h2 {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-size: clamp(2rem, 4.4vw, 3.1rem);
-  font-weight: 400;
-  letter-spacing: 0;
-}
-h3 { font-size: clamp(1.65rem, 3vw, 2.2rem); }
-
-.lede {
-  max-width: 48ch;
-  margin: 1.25rem 0 1.5rem;
-  color: var(--muted);
-  font-size: 1.1rem;
-}
-
-.button {
-  display: inline-block;
-  padding: 0.55rem 0.9rem;
-  border-radius: 0.35rem;
-  background: var(--accent);
-  color: #0B0B0C;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.button:hover { background: #F3E5D0; color: #0B0B0C; }
-
-.portrait {
-  display: block;
-  width: 100%;
-  aspect-ratio: 5 / 6;
-  object-fit: cover;
-  object-position: center 35%;
-  border-radius: 0.6rem;
-  border: 1px solid var(--rule);
-}
-
-.section-heading { margin-bottom: 1.5rem; }
-
-.featured {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  overflow: hidden;
-  border: 1px solid var(--rule);
-  border-radius: 0.6rem;
-  background: var(--panel);
-}
-
-.featured-copy { padding: clamp(1.25rem, 4vw, 2.75rem); }
-.featured h3 { font-size: clamp(2.2rem, 5vw, 4rem); }
-.featured-copy > p:not(.category), .project > p:not(.category) { color: var(--muted); }
-.featured-copy .project-summary, .project .project-summary { color: inherit; font-weight: 650; }
-
-.signal {
-  display: grid;
-  align-content: center;
-  min-height: 14rem;
-  overflow: hidden;
-  background: #1F1B17;
-  color: var(--accent);
-}
-
-.signal svg { display: block; width: 100%; }
-.signal-grid { stroke: #554332; stroke-width: 0.6; }
-.signal-line { stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
-.signal-echo { stroke-width: 12; opacity: 0.16; }
-.signal span { padding: 0.6rem 1.25rem 1rem; font-size: 0.85rem; }
-
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 2rem;
-  margin-top: 1.5rem;
-}
-
-.project {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  border-top: 1px solid var(--rule);
-  padding: 1.5rem 0;
-}
-
-.project p { margin-bottom: 0; }
-.project a { margin-top: 0.75rem; }
-.stack { font-size: 0.875rem; }
-
-.about {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 1rem 3rem;
-  margin-top: clamp(2.5rem, 7vw, 5rem);
-  padding: clamp(1.75rem, 5vw, 3rem) 0;
-  border-block: 1px solid var(--rule);
-}
-
-.about p { max-width: 55ch; margin: 0 0 1rem; }
-.about dl { margin: 1.5rem 0 0; }
-
-.about dl div {
-  display: grid;
-  grid-template-columns: 6rem 1fr;
-  gap: 0.5rem;
-  padding: 0.45rem 0;
-}
-
-.about dt { font-weight: 700; }
-.about dd { margin: 0; color: var(--muted); }
-.contact { align-items: center; padding: 2.5rem 0 3.5rem; }
-.contact p { margin: 0.45rem 0 0; color: var(--muted); }
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-@media (max-width: 680px) {
-  .portfolio { width: calc(100% - 2rem); }
-  .intro, .featured, .work-grid, .about { grid-template-columns: minmax(0, 1fr); }
-  .intro { gap: 1.5rem; }
-  .portrait { max-width: 19rem; aspect-ratio: 4 / 3; }
-  .signal { min-height: 0; }
-  .signal svg { max-height: 12rem; }
+/* Prevent unwanted tap highlights on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
