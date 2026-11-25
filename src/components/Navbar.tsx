@@ -56,9 +56,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             : 'py-4 sm:py-5 bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
           {/* Left: Branding & Status */}
-          <a href="#home" className="flex items-center gap-2.5 sm:gap-3 group max-w-[70%] sm:max-w-none">
+          <a href="#home" className="flex items-center gap-2.5 sm:gap-3 group max-w-[70%] lg:max-w-[230px] xl:max-w-none min-w-0">
             <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-gold/40 p-0.5 bg-zinc-900 group-hover:border-gold transition-colors flex-shrink-0">
               <img
                 src={PORTFOLIO_DATA.personal.logoUrl}
@@ -83,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           </a>
 
           {/* Center: Desktop Floating Pill Menu */}
-          <nav className="hidden md:flex items-center bg-zinc-900/70 border border-zinc-800/80 backdrop-blur-md rounded-full px-3.5 py-1.5 shadow-2xl">
+          <nav className="hidden lg:flex items-center bg-zinc-900/70 border border-zinc-800/80 backdrop-blur-md rounded-full px-2.5 xl:px-3.5 py-1.5 shadow-2xl flex-shrink-0">
             {PORTFOLIO_DATA.navigation.map((item) => {
               const targetId = item.href.replace('#', '');
               const isActive = activeSection === targetId;
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
+                  className={`relative whitespace-nowrap px-2.5 xl:px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                     isActive
                       ? 'text-white'
                       : 'text-text-muted hover:text-white hover:bg-zinc-800/40'
@@ -112,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           </nav>
 
           {/* Right: Desktop CTA Button */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             <a
               href="#contact"
               onClick={(e) => {
@@ -121,17 +121,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   onOpenContact();
                 }
               }}
-              className="inline-flex items-center gap-2 bg-gold hover:bg-gold-hover text-bg-main text-xs font-semibold px-4 py-2.5 rounded-full transition-all duration-200 shadow-lg shadow-gold/10 hover:shadow-gold/25 hover:-translate-y-0.5 active:scale-95"
+              className="inline-flex items-center gap-2 whitespace-nowrap bg-gold hover:bg-gold-hover text-bg-main text-xs font-semibold px-3.5 xl:px-4 py-2.5 rounded-full transition-all duration-200 shadow-lg shadow-gold/10 hover:shadow-gold/25 hover:-translate-y-0.5 active:scale-95"
             >
               <span>Let's Work Together</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
-          {/* Mobile Menu Hamburger Button */}
+          {/* Mobile / Tablet Menu Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-text-muted hover:text-white focus:outline-none active:scale-95 transition-transform"
+            className="lg:hidden p-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-text-muted hover:text-white focus:outline-none active:scale-95 transition-transform flex-shrink-0"
             aria-label="Toggle mobile navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -142,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
       {/* Mobile Drawer Menu Modal */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-40 md:hidden flex flex-col justify-start">
+          <div className="fixed inset-0 z-40 lg:hidden flex flex-col justify-start">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}

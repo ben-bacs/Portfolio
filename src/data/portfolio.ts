@@ -428,7 +428,7 @@ export const PORTFOLIO_DATA = {
       ],
       tags: ["React 19", "TypeScript", "Web Audio API", "PWA"],
       techStack: ["React 19", "TypeScript", "Tailwind CSS", "Web Audio API", "PWA", "Vite", "GitHub Pages"],
-      image: "https://images.unsplash.com/photo-1511295742362-92c96b124e52?auto=format&fit=crop&q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
       demoUrl: "https://ben-bacs.github.io/Sleep-Tracker/",
       githubUrl: "https://github.com/ben-bacs/Sleep-Tracker",
       featured: true,
