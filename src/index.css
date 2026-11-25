@@ -64,3 +64,14 @@
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Modal scroll containment per modern-web-guidance */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+

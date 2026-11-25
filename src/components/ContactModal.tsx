@@ -44,14 +44,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overscroll-contain">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/85 backdrop-blur-md"
+            className="absolute inset-0 bg-black/85 backdrop-blur-md overflow-hidden overscroll-contain"
           />
 
           {/* Modal Container */}
@@ -59,7 +59,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-xl bg-bg-card border border-zinc-700 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl z-10 p-5 sm:p-8 max-h-[92vh] overflow-y-auto"
+            className="relative w-full max-w-xl bg-bg-card border border-zinc-700 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl z-10 p-5 sm:p-8 max-h-[92vh] overflow-y-auto overscroll-contain"
           >
             {/* Ambient Corner Glow */}
             <div className="absolute top-0 right-0 w-48 h-48 gold-glow pointer-events-none rounded-full blur-2xl -z-10" />

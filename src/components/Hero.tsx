@@ -61,7 +61,9 @@ export const Hero: React.FC = () => {
               {/* Secondary Outline CTA */}
               <a
                 href={personal.cvUrl}
-                download
+                download="Benedict_Neil_Bacud_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-700/70 hover:border-zinc-500 text-white font-medium px-6 py-3.5 rounded-full transition-all duration-200 backdrop-blur-sm hover:-translate-y-0.5 active:scale-95 text-center text-sm"
               >
                 <span>Download CV</span>
@@ -72,16 +74,16 @@ export const Hero: React.FC = () => {
             {/* Quick Tech Badges & Location */}
             <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-zinc-800/60 w-full">
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-300 bg-zinc-900/70 border border-zinc-800 px-2.5 py-1 rounded-md">
-                <MapPin className="w-3 h-3 text-gold flex-shrink-0" /> Iloilo & Koronadal City
+                <MapPin className="w-3 h-3 text-gold flex-shrink-0" /> WVSU BSIT • Iloilo City
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-300 bg-zinc-900/70 border border-zinc-800 px-2.5 py-1 rounded-md">
-                <Server className="w-3 h-3 text-gold flex-shrink-0" /> Java, Rust & Go Systems
+                <Server className="w-3 h-3 text-gold flex-shrink-0" /> TypeScript, Python, Java & Rust
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-300 bg-zinc-900/70 border border-zinc-800 px-2.5 py-1 rounded-md">
-                <ShieldCheck className="w-3 h-3 text-emerald-400 flex-shrink-0" /> AppSec, RLS & CCNA
+                <ShieldCheck className="w-3 h-3 text-emerald-400 flex-shrink-0" /> Nessus, RLS, CCNA & CSS NC II
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-300 bg-zinc-900/70 border border-zinc-800 px-2.5 py-1 rounded-md">
-                <Terminal className="w-3 h-3 text-amber-400 flex-shrink-0" /> Linux & Edge Cloud
+                <Terminal className="w-3 h-3 text-amber-400 flex-shrink-0" /> Open Source PRs (#8984, #30158)
               </span>
             </div>
           </motion.div>
@@ -102,6 +104,9 @@ export const Hero: React.FC = () => {
               <img
                 src={personal.profileImage}
                 alt={personal.fullName}
+                {...({ fetchpriority: 'high' } as any)}
+                width={400}
+                height={500}
                 className="w-full h-full object-cover object-top filter grayscale contrast-105 brightness-95 group-hover:scale-105 group-hover:filter group-hover:grayscale-0 transition-all duration-700"
               />
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { Services } from './components/Services';
 import { About } from './components/About';
@@ -22,6 +23,7 @@ export const App: React.FC = () => {
       {/* Main Content Sections */}
       <main>
         <Hero />
+        <Experience />
         <Projects />
         <Services />
         <About />

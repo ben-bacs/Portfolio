@@ -102,11 +102,16 @@ export const Projects: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-transparent to-transparent opacity-80" />
                   
-                  {/* Tech tag badge on top left */}
-                  <div className="absolute top-3 left-3">
-                    <span className="text-[10px] sm:text-[11px] font-medium tracking-wide bg-bg-main/85 backdrop-blur-md border border-zinc-700/60 text-zinc-300 px-2.5 py-1 rounded-full">
+                  {/* Tech tag badge on top left & optional highlight badge on top right */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                    <span className="text-[10px] sm:text-[11px] font-medium tracking-wide bg-bg-main/85 backdrop-blur-md border border-zinc-700/60 text-zinc-300 px-2.5 py-1 rounded-full truncate">
                       {project.category}
                     </span>
+                    {project.badge && (
+                      <span className="text-[10px] font-semibold tracking-wide bg-gold/90 text-bg-main px-2.5 py-0.5 rounded-full shadow-md flex-shrink-0">
+                        {project.badge}
+                      </span>
+                    )}
                   </div>
 
                   {/* Floating Arrow Icon Button */}
@@ -148,14 +153,14 @@ export const Projects: React.FC = () => {
       {/* Project Details Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overscroll-contain">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+              className="absolute inset-0 bg-black/85 backdrop-blur-md overflow-hidden overscroll-contain"
             />
 
             {/* Modal Box */}
@@ -163,7 +168,7 @@ export const Projects: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-xl bg-bg-card border border-zinc-700 rounded-2xl overflow-hidden shadow-2xl z-10 max-h-[90vh] flex flex-col"
+              className="relative w-full max-w-xl bg-bg-card border border-zinc-700 rounded-2xl overflow-hidden shadow-2xl z-10 max-h-[90vh] flex flex-col overscroll-contain"
             >
               {/* Close Button */}
               <button
