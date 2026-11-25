@@ -1,537 +1,819 @@
-export interface Project {
-  id: string;
-  title: string;
-  category: string;
-  domain: 'Backend & Systems' | 'Security & Edge' | 'Apps & Tooling';
-  description: string;
-  highlights?: string[];
-  tags: string[];
-  techStack: string[];
-  image: string;
-  demoUrl?: string;
-  githubUrl?: string;
-  featured?: boolean;
-  badge?: string;
+export interface StackCategory {
+  index: string;
+  label: string;
+  items: { name: string; tag: string }[];
 }
 
-export interface ExperienceItem {
+export interface ExperienceEntry {
   id: string;
+  mark: string;
+  markTone: 'blue' | 'emerald' | 'amber' | 'violet' | 'zinc';
+  title: string;
   role: string;
-  organization: string;
-  period: string;
-  type: 'Contract Experience' | 'Education' | 'Leadership & Organizations';
-  location: string;
-  summary: string;
-  highlights: string[];
-  techStack?: string[];
-}
-
-export interface CertificationItem {
-  id: string;
-  title: string;
-  issuer: string;
-  date: string;
-  category: 'National Certification' | 'Cisco Networking Academy';
   badge: string;
+  period: string;
+  location: string;
+  metrics?: string[];
+  summary: string;
+  bullets: string[];
+  tags: string[];
+  linkUrl?: string;
+  linkLabel?: string;
 }
 
-export interface Service {
+export interface EducationEntry {
+  id: string;
+  mark: string;
+  markTone: 'blue' | 'emerald' | 'amber' | 'zinc';
+  institution: string;
+  program: string;
+  badge: string;
+  period: string;
+  location: string;
+  details: string[];
+  linkUrl?: string;
+}
+
+export interface MilestoneEntry {
+  id: string;
+  mark: string;
+  markTone: 'blue' | 'emerald' | 'amber' | 'violet';
+  title: string;
+  subtitle: string;
+  category: string;
+  timeframe: string;
+  status: 'MERGED' | 'ACTIVE' | 'CERTIFIED' | 'SHIPPED';
+  note: string;
+  href?: string;
+}
+
+export interface BlueprintProject {
   id: string;
   title: string;
-  description: string;
-  icon: 'Code2' | 'Layers' | 'ShieldCheck' | 'Cpu';
-  highlights: string[];
-}
-
-export interface Skill {
-  name: string;
-  level: number; // percentage
-  category: string;
-}
-
-export interface Testimonial {
-  id: string;
-  name: string;
-  role: string;
-  company: string;
-  avatar: string;
-  quote: string;
+  statusLabel: string;
+  domain: 'Backend & Systems' | 'Security & Edge' | 'Apps & Tooling';
+  summary: string;
+  bullets: string[];
+  stackIcons: string[];
+  featureChips: string[];
+  liveUrl?: string;
+  liveLabel?: string;
+  repoUrl?: string;
+  preview: {
+    header: string;
+    tag: string;
+    lines: { prefix?: string; text: string; tone?: 'add' | 'del' | 'accent' | 'ok' | 'muted' }[];
+  };
 }
 
 export const PORTFOLIO_DATA = {
   personal: {
-    fullName: "BENEDICT NEIL DACULA BACUD",
-    name: "Benedict Neil D. Bacud",
-    firstName: "Benedict Neil",
-    lastName: "Bacud",
-    title: "Software Development & Network and Information Security",
-    statusBadge: "AVAILABLE FOR WORK & OJT",
-    subtitle: "BSIT Major in Network & Information Security | Full-Stack, Backend & Security Engineer",
-
-    // Images & Branding (Relative for GitHub Pages)
-    profileImage: "./profile-hero.jpg",
-    aboutImage: "./profile.jpg",
-    logoUrl: "./logo-badge.png",
-    logoIcon: "./logo.png",
-
-    // Contact Information synced with finalized CV
-    email: "benedictneildaculabacud@gmail.com",
-    secondaryEmail: "benedictneilbacud@gmail.com",
-    phones: ["0945 201 3603", "0963 930 3496"],
-    offices: [
-      { city: "Iloilo City", province: "Iloilo", label: "Iloilo City, Iloilo" },
-      { city: "Koronadal City", province: "South Cotabato", label: "Koronadal City, South Cotabato" },
+    name: 'Benedict Neil D. Bacud',
+    fullName: 'Benedict Neil Dacula Bacud',
+    monogram: 'BNB',
+    handle: '@ben-bacs',
+    pronunciation: 'beh-neh-dikt neel bah-kood',
+    taglines: [
+      'Backend authorization, API contracts, and network security.',
+      'BSIT (Network & Information Security) at WVSU Main Campus.',
+      'Shipping tested code across TypeScript, Python, Java, and Rust.',
     ],
-    location: "Iloilo City & Koronadal City, Philippines",
-
-    github: "https://github.com/ben-bacs",
-    linkedin: "https://linkedin.com",
-    cvUrl: "./Benedict_Neil_Bacud_CV.pdf",
-
-    headline: {
-      regular1: "I engineer secure ",
-      highlight1: "backend systems",
-      regular2: ", resilient networks & ",
-      highlight2: "verified",
-      regular3: " web platforms.",
-    },
-    heroSubtitle:
-      "Fourth-year BSIT student specializing in Network and Information Security at West Visayas State University – Main Campus. Experienced in backend authorization, API contracts, automated regression testing, modular monoliths (Java/Spring Boot, Go, NestJS, Rust), and team-led Nessus vulnerability assessments.",
-    aboutHeading: {
-      regular1: "I'm a ",
-      highlight1: "security-first engineer",
-      regular2: " bridging backend systems & network defense.",
-    },
-    aboutBio: [
-      "As a fourth-year BS Information Technology student specializing in Network and Information Security at West Visayas State University (Main Campus) and an ongoing Backend Assistant for A.L.E.X. Car Dealership, I build secure software where authorization, API contracts, database isolation (PostgreSQL RLS), and automated regression tests are first-class citizens.",
-      "My work spans merged upstream open-source contributions (Mealie PR #8984, Cal.com SSRF defense PR #30158), our AI-assisted thesis platform Voice Voyage, team-led Nessus vulnerability assessments, and digital forensics (Quiet Campus). Hold TESDA Computer Systems Servicing NC II and Cisco Networking Academy certifications in CCNA 1–2, Network Defense, and Cybersecurity."
-    ],
-    experienceBadge: {
-      title: "TESDA & Cisco",
-      subtitle: "CSS NC II • CCNA • NetDef",
-      tag: "Verified Credentials"
-    }
+    avatar: './profile-hero.jpg',
+    portrait: './profile-hero.jpg',
+    logo: './logo-badge.png',
+    email: 'benedictneildaculabacud@gmail.com',
+    secondaryEmail: 'benedictneilbacud@gmail.com',
+    phones: ['0945 201 3603', '0963 930 3496'],
+    locationShort: 'Iloilo City, Philippines',
+    locationSub: 'Koronadal City · Open to Remote',
+    timezone: 'Asia/Manila',
+    github: 'https://github.com/ben-bacs',
+    cvUrl: './Benedict_Neil_Bacud_CV.pdf',
   },
 
-  navigation: [
-    { label: "Home", href: "#home" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Services", href: "#services" },
-    { label: "About & Skills", href: "#about" },
-    { label: "Contact", href: "#contact" },
+  telemetry: [
+    {
+      label: 'Status',
+      pill: 'Active',
+      pillTone: 'emerald' as const,
+      value: 'Open to OJT & Work',
+      sub: 'CDRRMO Slot · Backend & InfoSec',
+      dot: true,
+    },
+    {
+      label: 'Building',
+      pill: '2023 - Now',
+      pillTone: 'neutral' as const,
+      value: '3+ Years',
+      sub: 'Backend, APIs & Network Defense',
+    },
+    {
+      label: 'Location',
+      pill: 'UTC+8',
+      pillTone: 'neutral' as const,
+      value: 'Iloilo City, PH',
+      sub: 'Koronadal City · Remote Ready',
+    },
+    {
+      label: 'Local Time',
+      isClock: true,
+      value: 'PHT',
+      sub: 'Philippine Standard Time',
+    },
+    {
+      label: 'Focus',
+      value: 'Backend & Security',
+      sub: 'TS, Python, Java, Rust & Nessus',
+    },
+    {
+      label: 'Education',
+      value: 'BS Information Tech',
+      sub: 'WVSU Main · Net & InfoSec',
+    },
   ],
+
+  aboutBullets: [
+    {
+      id: 'intro',
+      lead: "I'm Benedict Neil D. Bacud",
+      body: ', a fourth-year BS Information Technology student majoring in Network and Information Security at West Visayas State University (Main Campus) and a contract Backend Assistant for A.L.E.X. Car Dealership.',
+      links: [],
+    },
+    {
+      id: 'code',
+      lead: 'Recent engineering work includes upstream open-source fixes in ',
+      body: ' (household recipe filter isolation in Python/SQLAlchemy) and Cal.com PR #30158 (SSRF redirect validation), alongside our Flutter + FastAPI thesis platform Voice Voyage, PCMS v2, and IJWKMS Next.',
+      links: [
+        { label: 'Mealie PR #8984', href: 'https://github.com/mealie-recipes/mealie/pull/8984' },
+        { label: 'Cal.com PR #30158', href: 'https://github.com/calcom/cal.diy/pull/30158' },
+      ],
+    },
+    {
+      id: 'sec',
+      lead: 'On the infrastructure and security side',
+      body: ', I led an external organization vulnerability assessment with Tenable Nessus and the Quiet Campus digital forensics case, and hold TESDA Computer Systems Servicing NC II plus four Cisco Networking Academy credentials (CCNA 1-2, Network Defense, Cybersecurity).',
+      links: [],
+    },
+  ],
+
+  stack: [
+    {
+      index: '01',
+      label: 'Languages',
+      items: [
+        { name: 'TypeScript', tag: 'TS' },
+        { name: 'Python', tag: 'PY' },
+        { name: 'Java 25', tag: 'JV' },
+        { name: 'Rust', tag: 'RS' },
+        { name: 'Dart', tag: 'DT' },
+        { name: 'SQL', tag: 'DB' },
+        { name: 'JavaScript', tag: 'JS' },
+      ],
+    },
+    {
+      index: '02',
+      label: 'Backend & Data',
+      items: [
+        { name: 'Node.js', tag: 'ND' },
+        { name: 'FastAPI', tag: 'FA' },
+        { name: 'Spring Boot 4', tag: 'SB' },
+        { name: 'PostgreSQL', tag: 'PG' },
+        { name: 'SQLAlchemy', tag: 'SA' },
+        { name: 'Supabase RLS', tag: 'RL' },
+        { name: 'Cloudflare D1', tag: 'CF' },
+      ],
+    },
+    {
+      index: '03',
+      label: 'Frontend & Client',
+      items: [
+        { name: 'React 19', tag: 'RC' },
+        { name: 'Next.js', tag: 'NX' },
+        { name: 'Flutter', tag: 'FL' },
+        { name: 'Tailwind CSS', tag: 'TW' },
+        { name: 'Tauri 2.2', tag: 'TR' },
+        { name: 'WebGL2', tag: 'GL' },
+        { name: 'Vite', tag: 'VT' },
+      ],
+    },
+    {
+      index: '04',
+      label: 'Security & Ops',
+      items: [
+        { name: 'Tenable Nessus', tag: 'NS' },
+        { name: 'CCNA R&S', tag: 'CC' },
+        { name: 'Digital Forensics', tag: 'DF' },
+        { name: 'Linux CLI', tag: 'LX' },
+        { name: 'Pytest & Jest', tag: 'QA' },
+        { name: 'Docker', tag: 'DK' },
+        { name: 'Git / GitHub CI', tag: 'GH' },
+      ],
+    },
+  ] as StackCategory[],
 
   experiences: [
     {
-      id: "alex-car-dealership",
-      role: "Backend Assistant (Contract Project Experience)",
-      organization: "A.L.E.X. Car Dealership",
-      period: "September 2026 – Present",
-      type: "Contract Experience",
-      location: "Remote / Contract",
-      summary: "Ongoing contract engineering focused on backend authorization, API contract enforcement, PostgreSQL integration evidence, and browser test verification.",
-      highlights: [
-        "Engineered role-scoped backend authorization guards and strict REST/RPC API contracts across dealership workflows",
-        "Delivered verifiable PostgreSQL database integration evidence and schema migration validation",
-        "Authored automated browser & integration tests submitted and reviewed through production pull requests"
+      id: 'alex-dealership',
+      mark: 'AX',
+      markTone: 'blue',
+      title: 'A.L.E.X. Car Dealership',
+      role: 'Backend Assistant',
+      badge: 'Contract Project',
+      period: 'Sep 2026 - Present',
+      location: 'Remote',
+      metrics: ['Role-Scoped Auth', 'PostgreSQL Verification', 'Browser PR Tests'],
+      summary:
+        'Contract backend engineering covering authorization rules, typed API contracts, PostgreSQL database verification, and automated browser test suites.',
+      bullets: [
+        'Built role-scoped authorization guards and strict request/response validation across dealership inventory and transaction endpoints.',
+        'Recorded PostgreSQL schema migration checks and relational query verification evidence for pull request reviews.',
+        'Wrote end-to-end browser and API regression tests gated in Git pull requests.',
       ],
-      techStack: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "Automated Browser Testing", "Git PR Workflows"]
+      tags: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Browser Testing', 'Git PRs'],
     },
     {
-      id: "wvsu-bsit",
-      role: "BS Information Technology – Network & Information Security",
-      organization: "West Visayas State University – Main Campus",
-      period: "August 2023 – June 2027 (Expected)",
-      type: "Education",
-      location: "La Paz, Iloilo City",
-      summary: "Fourth-year BSIT candidate specializing in Network and Information Security, enterprise systems development, vulnerability assessment, and digital forensics.",
-      highlights: [
-        "Team Lead for an external organization's Nessus-based Vulnerability Assessment and Quiet Campus digital forensics investigation",
-        "Co-developer of Voice Voyage (Thesis) utilizing Flutter, Dart, Python/FastAPI, and Firebase with regression test suites",
-        "Completed CCNA Introduction to Networks, CCNA Switching/Routing/Wireless Essentials, Network Defense, and Cybersecurity"
+      id: 'mealie-oss',
+      mark: 'ML',
+      markTone: 'emerald',
+      title: 'Mealie (mealie-recipes/mealie)',
+      role: 'Open-Source Contributor',
+      badge: 'Merged PR #8984',
+      period: '2026',
+      location: 'GitHub Upstream',
+      metrics: ['Merged Upstream', 'SQLAlchemy Query Fix', 'Pytest Tenant Suite'],
+      summary:
+        'Fixed a multi-tenant household recipe filtering bug in Mealie (self-hosted recipe manager) and added regression coverage.',
+      bullets: [
+        'Traced a cross-household filtering bug in the Python and SQLAlchemy repository query builder when combining category and search filters.',
+        'Scoped filter predicates to the caller household ID so recipes from other households in the same group do not leak into filtered results.',
+        'Added combined-filter and household-isolation regression tests to the upstream pytest suite (PR #8984).',
       ],
-      techStack: ["Network & InfoSec", "TCP/IP & Subnetting", "Nessus", "Digital Forensics", "Software Engineering"]
+      tags: ['Python', 'SQLAlchemy', 'FastAPI', 'Pytest', 'Multi-Tenant Auth'],
+      linkUrl: 'https://github.com/mealie-recipes/mealie/pull/8984',
+      linkLabel: 'View PR #8984',
     },
     {
-      id: "wvsu-cyberobotics",
-      role: "Technical Member & Prospective Auditor",
-      organization: "WVSU Cyberobotics",
-      period: "2025 – Present",
-      type: "Leadership & Organizations",
-      location: "WVSU Main Campus, Iloilo City",
-      summary: "Contributes to academic-system modernization, technical governance, and secure software architecture initiatives.",
-      highlights: [
-        "Architected academic-system modernization modules with multi-role authorization and revocable sessions",
-        "Implemented transactional enrollment validation and automated test coverage"
+      id: 'calcom-oss',
+      mark: 'CL',
+      markTone: 'violet',
+      title: 'Cal.com (calcom/cal.diy)',
+      role: 'Security Contributor',
+      badge: 'AppSec PR #30158',
+      period: '2026',
+      location: 'GitHub Upstream',
+      metrics: ['SSRF Mitigation', 'Redirect Hop Guard', 'Jest Private-IP Tests'],
+      summary:
+        'Implemented Server-Side Request Forgery (SSRF) protection for external ICS calendar feeds and AvatarAPI prefill fetches.',
+      bullets: [
+        'Added fetchWithSSRFProtection() in packages/lib/ssrfProtection.ts to block loopback, link-local, and RFC1918 private IP ranges.',
+        'Re-validated target hostnames and resolved IPs on every HTTP redirect hop with an explicit redirect cap.',
+        'Isolated multi-feed calendar sync errors with Promise.allSettled() and covered private IP bypass vectors in Jest.',
       ],
-      techStack: ["System Modernization", "Authorization", "Session Security", "Automated Testing"]
+      tags: ['TypeScript', 'Node.js', 'SSRF Defense', 'Network Security', 'Jest'],
+      linkUrl: 'https://github.com/calcom/cal.diy/pull/30158',
+      linkLabel: 'View PR #30158',
     },
     {
-      id: "af-rotc",
-      role: "Wing 7 Officer",
-      organization: "Air Force ROTC – WVSU Unit",
-      period: "2024 – Present",
-      type: "Leadership & Organizations",
-      location: "WVSU Main Campus, Iloilo City",
-      summary: "Provides technical editing, cadet database administration, and intelligence/operations support for unit muster and administrative workflows.",
-      highlights: [
-        "Managed unit database records, technical documentation, and operational intelligence support",
-        "Spearheaded digital muster and attendance system workflows for cadet accountability"
+      id: 'external-va',
+      mark: 'VA',
+      markTone: 'amber',
+      title: 'External Partner Vulnerability Assessment',
+      role: 'Assessment Team Lead',
+      badge: 'Security Audit',
+      period: '2026',
+      location: 'Iloilo City',
+      metrics: ['Tenable Nessus', 'CVSS v3 Triage', 'Redacted Evidence'],
+      summary:
+        'Led a student security team conducting a non-intrusive Nessus vulnerability assessment and remediation briefing for an external partner organization.',
+      bullets: [
+        'Scoped and executed Nessus scans across exposed services while respecting operational uptime windows.',
+        'Verified CVE findings manually to filter false positives and ranked fixes by CVSS severity and practical exploitability.',
+        'Delivered a redacted remediation report with configuration hardening steps and strict evidence handling.',
       ],
-      techStack: ["Database Support", "Technical Documentation", "Operations & Intelligence"]
-    }
-  ] as ExperienceItem[],
+      tags: ['Tenable Nessus', 'CVE / CVSS', 'Vulnerability Triage', 'Remediation Reporting'],
+    },
+  ] as ExperienceEntry[],
+
+  leadership: [
+    {
+      id: 'wvsu-cyberobotics',
+      mark: 'CR',
+      markTone: 'blue',
+      title: 'WVSU Cyberobotics',
+      role: 'Technical Member & Prospective Auditor',
+      badge: 'Campus Organization',
+      period: '2025 - Present',
+      location: 'WVSU Main Campus',
+      summary:
+        'Contributes to student software engineering workshops, academic system modernization prototypes, and technical audit documentation.',
+      bullets: [
+        'Built multi-role authorization and revocable session modules for academic operations prototypes.',
+        'Assisted with technical governance, code reviews, and equipment/project auditing.',
+      ],
+      tags: ['System Modernization', 'RBAC', 'Code Review', 'Technical Governance'],
+    },
+    {
+      id: 'af-rotc',
+      mark: 'AF',
+      markTone: 'zinc',
+      title: 'Air Force ROTC - WVSU Unit',
+      role: 'Wing 7 Officer',
+      badge: 'Cadet Officer',
+      period: '2024 - Present',
+      location: 'WVSU Main Campus',
+      summary:
+        'Handles technical editing, cadet roster database records, and administrative muster tracking for the unit.',
+      bullets: [
+        'Maintained structured cadet attendance and administrative records across training semesters.',
+        'Supported unit operations and intelligence briefings with technical documentation and digital muster sheets.',
+      ],
+      tags: ['Database Administration', 'Technical Editing', 'Operations Support'],
+    },
+  ] as ExperienceEntry[],
+
+  education: [
+    {
+      id: 'wvsu-bsit',
+      mark: 'WV',
+      markTone: 'blue',
+      institution: 'West Visayas State University - Main Campus',
+      program: 'BS Information Technology (Network & Information Security)',
+      badge: '4th Year Undergraduate',
+      period: 'Aug 2023 - Jun 2027',
+      location: 'La Paz, Iloilo City',
+      details: [
+        'Fourth-year BSIT student completing a 486-hour On-the-Job Training placement (accepted slot at CDRRMO).',
+        'Co-developer of Voice Voyage (undergraduate thesis) built with Flutter, Dart, Python/FastAPI, and Firebase.',
+        'Team lead for the External Partner Nessus Vulnerability Assessment and the Quiet Campus digital forensics investigation.',
+      ],
+    },
+  ] as EducationEntry[],
 
   certifications: [
     {
-      id: "tesda-css-ncii",
-      title: "Computer Systems Servicing NC II",
-      issuer: "TESDA (Technical Education and Skills Development Authority)",
-      date: "May 2026",
-      category: "National Certification",
-      badge: "NC II National Certificate"
+      id: 'tesda-css',
+      mark: 'NC',
+      markTone: 'emerald',
+      institution: 'TESDA (Technical Education and Skills Development Authority)',
+      program: 'Computer Systems Servicing NC II',
+      badge: 'National Certificate',
+      period: 'May 2026',
+      location: 'Philippines',
+      details: [
+        'National qualification covering PC/server assembly, OS installation, structured cabling, Windows/Linux network configuration, and hardware diagnostics.',
+      ],
+      linkUrl: './Benedict_Neil_Bacud_CV.pdf',
     },
     {
-      id: "ccna-srwe",
-      title: "CCNA: Switching, Routing, and Wireless Essentials",
-      issuer: "Cisco Networking Academy",
-      date: "January 14, 2026",
-      category: "Cisco Networking Academy",
-      badge: "Cisco Verified"
+      id: 'cisco-netdef',
+      mark: 'ND',
+      markTone: 'blue',
+      institution: 'Cisco Networking Academy',
+      program: 'Network Defense',
+      badge: 'Cisco Verified',
+      period: 'Apr 29, 2026',
+      location: 'Cisco NetAcad',
+      details: [
+        'Covers perimeter defense, ACLs, firewall policies, AAA access control, intrusion prevention, and system hardening.',
+      ],
+      linkUrl: './Benedict_Neil_Bacud_CV.pdf',
     },
     {
-      id: "cisco-netdef",
-      title: "Network Defense",
-      issuer: "Cisco Networking Academy",
-      date: "April 29, 2026",
-      category: "Cisco Networking Academy",
-      badge: "Cisco Security"
+      id: 'cisco-srwe',
+      mark: 'C2',
+      markTone: 'blue',
+      institution: 'Cisco Networking Academy',
+      program: 'CCNA: Switching, Routing, and Wireless Essentials',
+      badge: 'Cisco Verified',
+      period: 'Jan 14, 2026',
+      location: 'Cisco NetAcad',
+      details: [
+        'Covers VLANs, inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, FHRP, switch port security, and WLAN configuration.',
+      ],
+      linkUrl: './Benedict_Neil_Bacud_CV.pdf',
     },
     {
-      id: "ccna-itn",
-      title: "CCNA: Introduction to Networks",
-      issuer: "Cisco Networking Academy",
-      date: "May 20, 2025",
-      category: "Cisco Networking Academy",
-      badge: "Cisco Verified"
+      id: 'cisco-cyber',
+      mark: 'CB',
+      markTone: 'amber',
+      institution: 'Cisco Networking Academy',
+      program: 'Introduction to Cybersecurity',
+      badge: 'Cisco Verified',
+      period: '2026',
+      location: 'Cisco NetAcad',
+      details: [
+        'Foundational threat modeling, attack surface identification, network defense principles, and incident response workflows.',
+      ],
+      linkUrl: './Benedict_Neil_Bacud_CV.pdf',
     },
     {
-      id: "cisco-intro-cyber",
-      title: "Introduction to Cybersecurity",
-      issuer: "Cisco Networking Academy",
-      date: "2026",
-      category: "Cisco Networking Academy",
-      badge: "Cisco Security"
-    }
-  ] as CertificationItem[],
+      id: 'cisco-itn',
+      mark: 'C1',
+      markTone: 'blue',
+      institution: 'Cisco Networking Academy',
+      program: 'CCNA: Introduction to Networks',
+      badge: 'Cisco Verified',
+      period: 'May 20, 2025',
+      location: 'Cisco NetAcad',
+      details: [
+        'Covers OSI and TCP/IP models, IPv4 subnetting, IPv6 addressing, Ethernet switching, and Cisco IOS CLI configuration.',
+      ],
+      linkUrl: './Benedict_Neil_Bacud_CV.pdf',
+    },
+  ] as EducationEntry[],
+
+  milestones: [
+    {
+      id: 'ms-cdrrmo',
+      mark: 'CD',
+      markTone: 'emerald',
+      title: 'CDRRMO OJT Placement',
+      subtitle: '486-Hour BSIT Internship Slot',
+      category: 'Field Internship',
+      timeframe: '2026 - 2027',
+      status: 'ACTIVE',
+      note: 'Secured internship placement at the City Disaster Risk Reduction and Management Office.',
+    },
+    {
+      id: 'ms-alex',
+      mark: 'AX',
+      markTone: 'blue',
+      title: 'A.L.E.X. Dealership Backend',
+      subtitle: 'Auth Guards, API Contracts & Browser Tests',
+      category: 'Contract Engineering',
+      timeframe: 'Sep 2026 - Present',
+      status: 'ACTIVE',
+      note: 'Ongoing backend authorization, PostgreSQL integration evidence, and PR test verification.',
+    },
+    {
+      id: 'ms-mealie',
+      mark: 'ML',
+      markTone: 'emerald',
+      title: 'Mealie Upstream PR #8984',
+      subtitle: 'SQLAlchemy Multi-Tenant Filter Fix',
+      category: 'Open Source',
+      timeframe: '2026',
+      status: 'MERGED',
+      note: 'Merged into mealie-recipes/mealie with combined-filter pytest regression tests.',
+      href: 'https://github.com/mealie-recipes/mealie/pull/8984',
+    },
+    {
+      id: 'ms-tesda',
+      mark: 'NC',
+      markTone: 'amber',
+      title: 'TESDA CSS NC II & Cisco Track',
+      subtitle: 'National Certificate + 4 Cisco Completions',
+      category: 'Credentials',
+      timeframe: '2025 - 2026',
+      status: 'CERTIFIED',
+      note: 'Completed Computer Systems Servicing NC II, CCNA 1, CCNA 2, Network Defense, and Intro to Cybersecurity.',
+    },
+  ] as MilestoneEntry[],
 
   projects: [
     {
-      id: "alex-dealership",
-      title: "A.L.E.X. Car Dealership Backend",
-      category: "Contract Backend Engineering",
-      domain: "Backend & Systems",
-      badge: "Contract Work",
-      description: "Production dealership backend engineering covering role-based authorization, API contracts, PostgreSQL integration verification, and browser regression testing.",
-      highlights: [
-        "Implemented strict backend authorization guards and typed API contracts for dealership inventory and transaction flows",
-        "Produced verifiable PostgreSQL integration evidence and relational data integrity checks",
-        "Submitted end-to-end browser and API regression tests through peer-reviewed pull requests"
+      id: 'alex-dealership-proj',
+      title: 'A.L.E.X. | Car Dealership Backend',
+      statusLabel: 'Contract Backend Work',
+      domain: 'Backend & Systems',
+      summary:
+        'Role-scoped backend authorization, typed API contracts, PostgreSQL verification evidence, and browser regression tests for a car dealership platform.',
+      bullets: [
+        'Enforced role guards and schema validation on inventory, inquiry, and transaction routes.',
+        'Captured PostgreSQL integration query evidence and migration checks per pull request.',
+        'Added automated browser and API regression tests to prevent contract drift.',
       ],
-      tags: ["TypeScript", "Next.js", "Node.js", "PostgreSQL"],
-      techStack: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "API Contracts", "Automated Browser Tests"],
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com/ben-bacs",
-      githubUrl: "https://github.com/ben-bacs",
-      featured: true,
+      stackIcons: ['TS', 'NX', 'ND', 'PG'],
+      featureChips: ['Role-Scoped Auth', 'API Contracts', 'PostgreSQL', 'Browser PR Suite'],
+      repoUrl: 'https://github.com/ben-bacs',
+      preview: {
+        header: 'src/server/auth/requireRole.ts',
+        tag: 'CONTRACT · PR VERIFIED',
+        lines: [
+          { prefix: '01', text: 'export async function assertDealershipScope(ctx, role) {', tone: 'muted' },
+          { prefix: '+', text: '  if (!ctx.session || ! hasRole(ctx.user, role)) throw 403;', tone: 'add' },
+          { prefix: '+', text: '  await verifyTenantDealerRow(db, ctx.user.dealerId);', tone: 'add' },
+          { prefix: '✓', text: 'postgres integration + playwright auth suite: 18 passed', tone: 'ok' },
+        ],
+      },
     },
     {
-      id: "voice-voyage",
-      title: "Voice Voyage (Thesis Project)",
-      category: "AI-Assisted Mobile & FastAPI Platform",
-      domain: "Apps & Tooling",
-      badge: "Thesis Project",
-      description: "Cross-platform mobile thesis application built with Flutter, Dart, Python/FastAPI, and Firebase featuring structured client progression and service integration.",
-      highlights: [
-        "Engineered client progression workflows and resilient Python/FastAPI + Firebase backend service integration",
-        "Resolved critical Flutter state and UI lifecycle bugs backed by automated unit and widget regression tests",
-        "Coordinated multi-layer API serialization and authentication state across mobile clients"
+      id: 'mealie-pr8984',
+      title: 'Mealie | Household Filter Isolation',
+      statusLabel: 'Merged Upstream PR #8984',
+      domain: 'Backend & Systems',
+      summary:
+        'Upstream bug fix in mealie-recipes/mealie preventing cross-household recipe leakage when filtering by categories or tags inside shared groups.',
+      bullets: [
+        'Fixed SQLAlchemy query predicates so household-scoped filters bind strictly to the active household.',
+        'Added pytest integration cases covering multi-household groups and combined query filters.',
+        'Reviewed and merged into the official Mealie repository under PR #8984.',
       ],
-      tags: ["Flutter", "Dart", "Python / FastAPI", "Firebase"],
-      techStack: ["Flutter", "Dart", "Python", "FastAPI", "Firebase", "Automated Regression Tests"],
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com/ben-bacs",
-      githubUrl: "https://github.com/ben-bacs",
-      featured: true,
+      stackIcons: ['PY', 'FA', 'SA', 'QA'],
+      featureChips: ['Merged PR #8984', 'SQLAlchemy', 'Tenant Isolation', 'Pytest'],
+      liveUrl: 'https://github.com/mealie-recipes/mealie/pull/8984',
+      liveLabel: 'PR #8984',
+      repoUrl: 'https://github.com/ben-bacs/mealie',
+      preview: {
+        header: 'mealie/repos/recipe_query.py · #8984',
+        tag: 'MERGED UPSTREAM',
+        lines: [
+          { prefix: '-', text: 'stmt = stmt.where(RecipeModel.group_id == group_id)', tone: 'del' },
+          { prefix: '+', text: 'stmt = stmt.where(RecipeModel.household_id == hh_id)', tone: 'add' },
+          { prefix: '+', text: 'test_household_recipe_filter_isolation() -> PASSED', tone: 'ok' },
+          { prefix: '#', text: 'mealie-recipes/mealie pull/8984 merged', tone: 'accent' },
+        ],
+      },
     },
     {
-      id: "mealie-opensource",
-      title: "Mealie Open-Source Contribution (PR #8984)",
-      category: "Merged Open-Source Bug Fix",
-      domain: "Backend & Systems",
-      badge: "Merged PR #8984",
-      description: "Merged upstream contribution to Mealie (self-hosted recipe manager) fixing multi-tenant household-specific recipe filtering in Python & SQLAlchemy.",
-      highlights: [
-        "Diagnosed and fixed a cross-household recipe filtering defect in Mealie's Python / SQLAlchemy query layer (PR #8984)",
-        "Enforced strict household tenant isolation across combined search and category filter queries",
-        "Added comprehensive combined-filter and tenant-isolation regression tests to the upstream pytest suite"
+      id: 'voice-voyage',
+      title: 'Voice Voyage | Thesis Platform',
+      statusLabel: 'Undergraduate Thesis',
+      domain: 'Apps & Tooling',
+      summary:
+        'Mobile learning and speech progression platform built with Flutter, Dart, Python/FastAPI, and Firebase, backed by client-state regression tests.',
+      bullets: [
+        'Implemented structured learner progression flows and FastAPI + Firebase service integration.',
+        'Fixed asynchronous widget lifecycle and state synchronization bugs in Flutter.',
+        'Added unit and widget regression tests around progression gating and API serialization.',
       ],
-      tags: ["Python", "SQLAlchemy", "Pytest", "PR #8984"],
-      techStack: ["Python", "SQLAlchemy", "FastAPI", "Pytest", "Multi-Tenant Isolation", "Open Source"],
-      image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com/mealie-recipes/mealie/pull/8984",
-      githubUrl: "https://github.com/ben-bacs/mealie",
-      featured: true,
+      stackIcons: ['FL', 'DT', 'PY', 'FA'],
+      featureChips: ['Flutter & Dart', 'Python / FastAPI', 'Firebase', 'Regression Suite'],
+      repoUrl: 'https://github.com/ben-bacs',
+      preview: {
+        header: 'voice_voyage/progression_service.dart',
+        tag: 'THESIS · FLUTTER + FASTAPI',
+        lines: [
+          { prefix: '→', text: 'POST /api/v1/sessions/evaluate -> 200 OK (FastAPI)', tone: 'accent' },
+          { prefix: '+', text: 'syncStageCheckpoint(uid, lessonId, scoreDelta);', tone: 'add' },
+          { prefix: '✓', text: 'flutter test test/progression_cubit_test.dart: PASS', tone: 'ok' },
+          { prefix: 'i', text: 'Firebase Auth + Firestore state synced', tone: 'muted' },
+        ],
+      },
     },
     {
-      id: "pcms-v2",
-      title: "PCMS v2 Pediatric Clinic Management",
-      category: "Healthcare Replatform & RLS/MFA",
-      domain: "Security & Edge",
-      badge: "CV Highlight",
-      description: "Clinic-management replatform engineered with Next.js, TypeScript, and Supabase PostgreSQL featuring role-scoped clinical workflows, RLS/MFA, and synthetic test suites.",
-      highlights: [
-        "Database-enforced PostgreSQL Row-Level Security (RLS) and Multi-Factor Authentication (MFA) isolating clinical records",
-        "Role-scoped workflows for pediatricians, staff, and guardians validated exclusively with privacy-safe synthetic data",
-        "Automated security and workflow regression tests verifying zero cross-role data leakage"
+      id: 'pcms-v2',
+      title: 'PCMS v2 | Pediatric Clinic System',
+      statusLabel: 'Healthcare Replatform',
+      domain: 'Security & Edge',
+      summary:
+        'Clinic management replatform using Next.js, TypeScript, and Supabase PostgreSQL with database-level Row-Level Security (RLS) and MFA.',
+      bullets: [
+        'Wrote PostgreSQL RLS policies and MFA checks separating pediatrician, staff, and guardian views.',
+        'Validated clinical scheduling and patient chart flows strictly against synthetic test datasets.',
+        'Verified zero cross-role record access with automated integration tests.',
       ],
-      tags: ["Next.js", "TypeScript", "Supabase PostgreSQL", "RLS/MFA"],
-      techStack: ["Next.js", "TypeScript", "Supabase PostgreSQL", "Row-Level Security (RLS)", "MFA", "Automated Testing"],
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com/ben-bacs/Pediatric-Clinic-Management-System-PCMS-",
-      githubUrl: "https://github.com/ben-bacs/Pediatric-Clinic-Management-System-PCMS-",
-      featured: true,
+      stackIcons: ['NX', 'TS', 'PG', 'RL'],
+      featureChips: ['PostgreSQL RLS', 'Multi-Factor Auth', 'Synthetic Data', 'Role Workflows'],
+      liveUrl: 'https://github.com/ben-bacs/Pediatric-Clinic-Management-System-PCMS-',
+      liveLabel: 'Repository',
+      repoUrl: 'https://github.com/ben-bacs/Pediatric-Clinic-Management-System-PCMS-',
+      preview: {
+        header: 'supabase/migrations/004_clinical_rls.sql',
+        tag: 'RLS + MFA ENFORCED',
+        lines: [
+          { prefix: 'SQL', text: 'ALTER TABLE patient_records ENABLE ROW LEVEL SECURITY;', tone: 'accent' },
+          { prefix: '+', text: "USING (auth.jwt()->>'aal' = 'aal2' AND has_clinic_role())", tone: 'add' },
+          { prefix: '✓', text: 'guardian cross-patient read attempt -> 0 rows', tone: 'ok' },
+          { prefix: 'i', text: 'dataset: 100% synthetic clinical fixtures', tone: 'muted' },
+        ],
+      },
     },
     {
-      id: "ijwkms-next",
-      title: "IJWKMS Next Academic Operations",
-      category: "Modular Monolith & RBAC",
-      domain: "Backend & Systems",
-      badge: "CV Highlight",
-      description: "Academic-system modernization built with Java/Spring Boot, PostgreSQL, and React featuring multi-role authorization, revocable sessions, and enrollment tests.",
-      highlights: [
-        "Modular monolith architecture in Java & Spring Boot with strict domain boundaries and Flyway migrations",
-        "Server-revocable HttpOnly cookie sessions, BCrypt password hashing, and multi-role RBAC enforcement",
-        "Transactional prerequisite validation, append-only audit trails, and automated enrollment test suites"
+      id: 'ijwkms-next',
+      title: 'IJWKMS Next | Academic Operations',
+      statusLabel: 'Modular Monolith',
+      domain: 'Backend & Systems',
+      summary:
+        'Academic enrollment and operations backend built as a Java 25 and Spring Boot 4 modular monolith with PostgreSQL 17, Flyway, and React 19.',
+      bullets: [
+        'Structured clear module boundaries with Flyway schema migrations and append-only audit logs.',
+        'Implemented server-revocable HttpOnly cookie sessions, BCrypt hashing, and multi-role RBAC.',
+        'Covered prerequisite checks and concurrent section capacity rules with automated enrollment tests.',
       ],
-      tags: ["Java / Spring Boot", "PostgreSQL", "React", "RBAC"],
-      techStack: ["Java 25", "Spring Boot 4", "PostgreSQL 17", "Flyway", "React 19", "TypeScript", "Docker Compose"],
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com/ben-bacs/IJWKMS---Admin-Student-Management-System",
-      githubUrl: "https://github.com/ben-bacs/IJWKMS---Admin-Student-Management-System",
-      featured: true,
+      stackIcons: ['JV', 'SB', 'PG', 'RC'],
+      featureChips: ['Java 25 / Spring Boot 4', 'Revocable Sessions', 'Flyway SQL', 'Audit Log'],
+      liveUrl: 'https://github.com/ben-bacs/IJWKMS---Admin-Student-Management-System',
+      liveLabel: 'Repository',
+      repoUrl: 'https://github.com/ben-bacs/IJWKMS---Admin-Student-Management-System',
+      preview: {
+        header: 'EnrollmentCommandService.java',
+        tag: 'SPRING BOOT 4 · PG 17',
+        lines: [
+          { prefix: '@', text: '@Transactional(isolation = Isolation.READ_COMMITTED)', tone: 'accent' },
+          { prefix: '+', text: 'prereqPolicy.assertSatisfied(studentId, subjectCode);', tone: 'add' },
+          { prefix: '+', text: 'auditLedger.append("ENROLL_COMMIT", actorId, sectionId);', tone: 'add' },
+          { prefix: '✓', text: './mvnw verify -> EnrollmentConcurrencyIT PASSED', tone: 'ok' },
+        ],
+      },
     },
     {
-      id: "nessus-va",
-      title: "External Vulnerability Assessment",
-      category: "Team Lead • Nessus Security Audit",
-      domain: "Security & Edge",
-      badge: "Team Lead",
-      description: "Led a team's Nessus-based vulnerability assessment for an external partner organization, covering non-intrusive scanning, CVSS triage, and remediation reporting.",
-      highlights: [
-        "Directed credentialed and non-credentialed Nessus vulnerability scanning across the partner organization's network perimeter",
-        "Analyzed CVE findings, eliminated false positives, and prioritized remediation roadmaps by CVSS severity and exploitability",
-        "Enforced strict evidence integrity, redaction, and confidentiality protocols to protect internal organizational assets"
+      id: 'calcom-ssrf',
+      title: 'Cal.com | SSRF Redirect Defense',
+      statusLabel: 'Open-Source Security PR #30158',
+      domain: 'Security & Edge',
+      summary:
+        'Upstream security patch in Cal.com blocking Server-Side Request Forgery across HTTP redirect chains in ICS calendar imports and AvatarAPI flows.',
+      bullets: [
+        'Built fetchWithSSRFProtection() to inspect resolved IPs against private, loopback, and metadata CIDR blocks.',
+        'Enforced per-hop validation on manual 3xx redirects and capped redirect depth.',
+        'Added Jest unit tests for IPv4/IPv6 loopback, 169.254.169.254, and multi-feed Promise.allSettled isolation.',
       ],
-      tags: ["Nessus", "Vulnerability Assessment", "CVSS Triage", "Network Security"],
-      techStack: ["Tenable Nessus", "CVE / CVSS Analysis", "Network Reconnaissance", "Evidence Integrity", "Remediation Reporting"],
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "#contact",
-      githubUrl: "https://github.com/ben-bacs",
-      featured: true,
+      stackIcons: ['TS', 'ND', 'NX', 'QA'],
+      featureChips: ['PR #30158', 'SSRF Guard', 'CIDR Validation', 'Jest Suite'],
+      liveUrl: 'https://github.com/calcom/cal.diy/pull/30158',
+      liveLabel: 'PR #30158',
+      repoUrl: 'https://github.com/calcom/cal.diy/pull/30158',
+      preview: {
+        header: 'packages/lib/ssrfProtection.ts · #30158',
+        tag: 'APPSEC · SSRF GUARD',
+        lines: [
+          { prefix: '+', text: 'const res = await fetch(url, { redirect: "manual" });', tone: 'add' },
+          { prefix: '+', text: 'if (isPrivateOrLoopbackIP(resolvedIp)) throw SSRFError;', tone: 'add' },
+          { prefix: '✓', text: 'blocks 127.0.0.1, ::1, 169.254.169.254 on hop 2', tone: 'ok' },
+          { prefix: '#', text: 'calcom/cal.diy pull/30158', tone: 'accent' },
+        ],
+      },
     },
     {
-      id: "quiet-campus",
-      title: "Quiet Campus Digital Forensics",
-      category: "Digital Forensics & Incident Analysis",
-      domain: "Security & Edge",
-      badge: "Forensics Lead",
-      description: "AI-assisted academic digital forensics investigation guiding team roles, evidence chain-of-custody, artifact extraction, and timeline reconstruction.",
-      highlights: [
-        "Coordinated forensic team roles and structured the end-to-end digital forensics assessment methodology",
-        "Extracted and verified required disk, log, and memory case artifacts while preserving cryptographic hash integrity",
-        "Synthesized technical forensic findings into an auditable incident timeline and evidentiary report"
+      id: 'nessus-va',
+      title: 'Nessus | External Vulnerability Audit',
+      statusLabel: 'Assessment Team Lead',
+      domain: 'Security & Edge',
+      summary:
+        'Team-led Tenable Nessus vulnerability assessment for an external partner organization, covering network scanning, CVSS triage, and remediation documentation.',
+      bullets: [
+        'Planned scan windows and host scope with partner stakeholders to avoid service disruption.',
+        'Correlated Nessus plugin outputs with service banners to separate real exposures from backported patches.',
+        'Produced an actionable remediation matrix while redacting internal IPs and hostnames.',
       ],
-      tags: ["Digital Forensics", "Evidence Integrity", "Linux CLI", "Incident Analysis"],
-      techStack: ["Digital Forensics", "Artifact Extraction", "Chain of Custody", "Linux CLI", "Forensic Documentation"],
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "#contact",
-      githubUrl: "https://github.com/ben-bacs",
-      featured: true,
+      stackIcons: ['NS', 'LX', 'CC', 'DF'],
+      featureChips: ['Tenable Nessus', 'CVSS v3 Triage', 'False-Positive Filter', 'Hardening Guide'],
+      preview: {
+        header: 'va-report/cvss-triage-summary.log',
+        tag: 'TEAM LEAD · REDACTED',
+        lines: [
+          { prefix: 'SCAN', text: 'nessus policy: non-intrusive service enumeration', tone: 'accent' },
+          { prefix: '!', text: 'triaged critical/high findings -> verified patch state', tone: 'add' },
+          { prefix: '✓', text: 'evidence hashes logged · partner identifiers redacted', tone: 'ok' },
+          { prefix: 'i', text: 'delivered prioritized remediation runbook', tone: 'muted' },
+        ],
+      },
     },
     {
-      id: "calcom-ssrf",
-      title: "Cal.com SSRF Vulnerability Defense",
-      category: "Open Source Security Research",
-      domain: "Security & Edge",
-      badge: "PR #30158",
-      description: "Upstream security contribution mitigating Server-Side Request Forgery (SSRF) in ICS feed calendars and AvatarAPI prefill flows (PR #30158).",
-      highlights: [
-        "Engineered fetchWithSSRFProtection() in packages/lib/ssrfProtection.ts for upstream Cal.com",
-        "Enforced strict IP/hostname validation across HTTP redirect hops and capped maximum redirect depth",
-        "Isolated multi-feed calendar failures via Promise.allSettled() with full Jest test coverage for loopback/private IPs"
+      id: 'quiet-campus',
+      title: 'Quiet Campus | Digital Forensics',
+      statusLabel: 'Forensics Case Lead',
+      domain: 'Security & Edge',
+      summary:
+        'Academic digital forensics investigation leading team role assignment, artifact acquisition, hash verification, and incident timeline reconstruction.',
+      bullets: [
+        'Assigned acquisition, log analysis, and reporting duties across the forensics team.',
+        'Extracted disk and system log artifacts on Linux while verifying SHA-256 chain-of-custody hashes.',
+        'Compiled timestamped evidentiary findings into a structured incident timeline.',
       ],
-      tags: ["AppSec", "TypeScript", "Node.js", "Jest"],
-      techStack: ["TypeScript", "Node.js", "Next.js", "SSRF Defense", "Jest Test Suite", "Network Security"],
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com/calcom/cal.diy/pull/30158",
-      githubUrl: "https://github.com/calcom/cal.diy/pull/30158",
-      featured: true,
+      stackIcons: ['DF', 'LX', 'PY', 'QA'],
+      featureChips: ['SHA-256 Integrity', 'Artifact Triage', 'Timeline Reconstruction', 'Linux CLI'],
+      preview: {
+        header: 'forensics/chain_of_custody.sha256',
+        tag: 'CASE LEAD · FORENSICS',
+        lines: [
+          { prefix: '$', text: 'sha256sum -c evidence_manifest.sha256', tone: 'accent' },
+          { prefix: '✓', text: 'disk_image.dd: OK (hash verified pre/post triage)', tone: 'ok' },
+          { prefix: '+', text: 'correlated auth.log + filesystem MACB timestamps', tone: 'add' },
+          { prefix: 'i', text: 'reconstructed full incident timeline report', tone: 'muted' },
+        ],
+      },
     },
     {
-      id: "resona",
-      title: "RESONA Native Audio Visualizer",
-      category: "Native Rust & WebGL2 DSP",
-      domain: "Backend & Systems",
-      description: "Lightweight Windows 11 desktop music-reactive idle visualizer powered by native Rust WASAPI loopback capture, a 64-band logarithmic FFT DSP engine, and 8 decoupled WebGL2 shader scenes.",
-      highlights: [
-        "Zero-permission Windows WASAPI loopback audio capture in native Rust with 64-band logarithmic FFT & Hann windowing",
-        "8 hardware-accelerated WebGL2 presets decoupled from React with 60/30 FPS power throttling",
-        "Atomic filesystem transactions (.tmp write-sync-replace, .bak rollback, .corrupt quarantine) & CI/CD MSI/NSIS releases"
+      id: 'resona-dsp',
+      title: 'RESONA | Rust WASAPI Visualizer',
+      statusLabel: 'Native Desktop App',
+      domain: 'Backend & Systems',
+      summary:
+        'Windows 11 desktop audio visualizer written in Rust (Tauri 2.2) with WASAPI loopback capture, 64-band logarithmic FFT, and 8 WebGL2 shader scenes.',
+      bullets: [
+        'Captured desktop audio in Rust via Windows WASAPI loopback with Hann windowing and 64-band FFT.',
+        'Built 8 GPU-accelerated WebGL2 shader presets decoupled from React state with 60/30 FPS throttling.',
+        'Added atomic config writes (.tmp sync-replace, .bak rollback) and GitHub Actions MSI/NSIS builds.',
       ],
-      tags: ["Rust", "Tauri 2.2", "WebGL2", "TypeScript"],
-      techStack: ["Rust 1.78+", "Tauri 2.2", "Windows WASAPI", "WebGL2 Shaders", "React 18", "TypeScript", "Tailwind CSS", "GitHub Actions"],
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com/ben-bacs/RESONA/releases",
-      githubUrl: "https://github.com/ben-bacs/RESONA",
-      featured: true,
+      stackIcons: ['RS', 'TR', 'GL', 'TS'],
+      featureChips: ['Rust WASAPI', '64-Band FFT DSP', 'WebGL2 Shaders', 'MSI / NSIS CI'],
+      liveUrl: 'https://github.com/ben-bacs/RESONA/releases',
+      liveLabel: 'Releases',
+      repoUrl: 'https://github.com/ben-bacs/RESONA',
+      preview: {
+        header: 'src-tauri/src/audio/fft_processor.rs',
+        tag: 'RUST + TAURI 2.2 + WEBGL2',
+        lines: [
+          { prefix: 'fn', text: 'process_wasapi_frame(&mut self, pcm: &[f32]) -> [f32; 64]', tone: 'accent' },
+          { prefix: '+', text: 'apply_hann_window(&mut self.buf); self.fft.process();', tone: 'add' },
+          { prefix: '✓', text: 'atomic_config::write_sync_replace(".tmp" -> ".json")', tone: 'ok' },
+          { prefix: '60fps', text: '8 decoupled WebGL2 fragment shader pipelines', tone: 'muted' },
+        ],
+      },
     },
     {
-      id: "bensoy",
-      title: "BENSOY Spotify Intelligence",
-      category: "Edge Analytics & Privacy",
-      domain: "Security & Edge",
-      description: "Private, edge-native Spotify listening intelligence and chronobiology analytics platform with zero external tracking and encrypted token storage.",
-      highlights: [
-        "AES-256-GCM encryption at rest for Spotify OAuth tokens stored in Cloudflare D1 edge SQLite",
-        "Deterministic cron polling (*/30 * * * *) on Cloudflare Workers with idempotent playback deduplication",
-        "24-hour circadian listening distribution analytics and custom vector receipt generation"
+      id: 'bensoy-edge',
+      title: 'BENSOY | Edge Spotify Analytics',
+      statusLabel: 'Cloudflare Workers + D1',
+      domain: 'Security & Edge',
+      summary:
+        'Self-hosted Spotify listening tracker on Cloudflare Workers and D1 SQLite using AES-256-GCM encrypted OAuth tokens and 30-minute cron ingestion.',
+      bullets: [
+        'Encrypted refresh tokens at rest with AES-256-GCM before writing to Cloudflare D1 edge SQLite.',
+        'Scheduled idempotent */30 * * * * cron workers to deduplicate playback history.',
+        'Rendered 24-hour listening distribution charts with Next.js and Drizzle ORM.',
       ],
-      tags: ["Cloudflare Workers", "Cloudflare D1", "Next.js", "Drizzle ORM"],
-      techStack: ["Cloudflare Workers", "Cloudflare D1 (Edge SQLite)", "Next.js", "React 19", "Drizzle ORM", "TypeScript", "Tailwind CSS", "AES-256-GCM"],
-      image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://github.com/ben-bacs/BENSOY",
-      githubUrl: "https://github.com/ben-bacs/BENSOY",
-      featured: true,
+      stackIcons: ['CF', 'NX', 'TS', 'DB'],
+      featureChips: ['Cloudflare Workers', 'D1 Edge SQLite', 'AES-256-GCM', 'Cron Ingestion'],
+      liveUrl: 'https://github.com/ben-bacs/BENSOY',
+      liveLabel: 'Repository',
+      repoUrl: 'https://github.com/ben-bacs/BENSOY',
+      preview: {
+        header: 'workers/cron-ingest.ts',
+        tag: 'CLOUDFLARE D1 · AES-256-GCM',
+        lines: [
+          { prefix: 'CRON', text: 'schedule("*/30 * * * *") -> syncRecentlyPlayed()', tone: 'accent' },
+          { prefix: '+', text: 'const token = await decryptAesGcm(env.KEY, row.cipher);', tone: 'add' },
+          { prefix: '✓', text: 'ON CONFLICT (played_at, track_id) DO NOTHING', tone: 'ok' },
+          { prefix: '0ms', text: 'zero third-party analytics or client telemetry', tone: 'muted' },
+        ],
+      },
     },
     {
-      id: "autorest-sleep-tracker",
-      title: "AutoRest Sleep Tracker PWA",
-      category: "PWA & Web Audio Synthesis",
-      domain: "Apps & Tooling",
-      description: "Zero-server-cost, 100% private sleep debt analytics PWA featuring hypnogram visualizations, circadian recovery scores, and procedural audio synthesis.",
-      highlights: [
-        "100% client-side offline-capable PWA with zero external telemetry or cloud vendor dependencies",
-        "Procedural Web Audio API brown/pink/rain noise synthesizer and interactive sleep stage hypnograms",
-        "Apple Health / AutoSleep-inspired dark OLED aesthetic deployed on GitHub Pages"
+      id: 'autorest-pwa',
+      title: 'AutoRest | Offline Sleep PWA',
+      statusLabel: 'Live on GitHub Pages',
+      domain: 'Apps & Tooling',
+      summary:
+        'Client-only Progressive Web App for tracking sleep debt, stage hypnograms, and Web Audio API procedural noise without server storage.',
+      bullets: [
+        'Stored all sleep logs locally in the browser with offline service-worker caching.',
+        'Synthesized real-time brown, pink, and rain noise directly via Web Audio API nodes.',
+        'Built responsive hypnogram and recovery charts in React 19 and TypeScript.',
       ],
-      tags: ["React 19", "TypeScript", "Web Audio API", "PWA"],
-      techStack: ["React 19", "TypeScript", "Tailwind CSS", "Web Audio API", "PWA", "Vite", "GitHub Pages"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://ben-bacs.github.io/Sleep-Tracker/",
-      githubUrl: "https://github.com/ben-bacs/Sleep-Tracker",
-      featured: true,
+      stackIcons: ['RC', 'TS', 'TW', 'VT'],
+      featureChips: ['100% Offline PWA', 'Web Audio DSP', 'Hypnogram Charts', 'Zero Telemetry'],
+      liveUrl: 'https://ben-bacs.github.io/Sleep-Tracker/',
+      liveLabel: 'Live App',
+      repoUrl: 'https://github.com/ben-bacs/Sleep-Tracker',
+      preview: {
+        header: 'src/audio/noiseGenerator.ts',
+        tag: 'LIVE PWA · WEB AUDIO',
+        lines: [
+          { prefix: 'DSP', text: 'AudioContext -> BiquadFilterNode (lowpass 420Hz)', tone: 'accent' },
+          { prefix: '+', text: 'computeRollingSleepDebt(entries, 14) -> -1.4h', tone: 'add' },
+          { prefix: '✓', text: 'serviceWorker: offline cache ready · 0 network calls', tone: 'ok' },
+          { prefix: '↗', text: 'ben-bacs.github.io/Sleep-Tracker', tone: 'muted' },
+        ],
+      },
     },
     {
-      id: "academic-courseware-hub",
-      title: "BSIT 4B Academic Courseware Hub",
-      category: "Interactive Educational Platform",
-      domain: "Apps & Tooling",
-      description: "Academic lecture portal and 479-slide deck system covering CIT 245 (Cyberforensics) and CIT 220 (Information Assurance & Security 2).",
-      highlights: [
-        "479 interactive lecture slides covering Cyberforensics (CIT 245) and Information Assurance & Security 2 (CIT 220)",
-        "Built-in syntax-highlighted terminal simulators, forensic command breakdowns, and persistent study progress",
-        "Keyboard-navigable presentation engine hosted live on GitHub Pages"
+      id: 'bsit4b-hub',
+      title: 'BSIT 4B | Cyberforensics Courseware',
+      statusLabel: 'Live Lecture Portal',
+      domain: 'Apps & Tooling',
+      summary:
+        'Interactive 479-slide study portal for CIT 245 (Cyberforensics) and CIT 220 (Information Assurance & Security 2) with keyboard deck controls.',
+      bullets: [
+        'Indexed 479 lecture slides across Cyberforensics and Information Assurance modules.',
+        'Included terminal command breakdowns, topic search, and LocalStorage reading progress.',
+        'Deployed static Vite bundle to GitHub Pages for fast mobile and laptop review.',
       ],
-      tags: ["React", "TypeScript", "Vite", "Cyberforensics"],
-      techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "LocalStorage", "Syntax Highlighting", "GitHub Pages"],
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000",
-      demoUrl: "https://ben-bacs.github.io/bsit4b-nis-st/",
-      githubUrl: "https://github.com/ben-bacs/bsit4b-nis-st",
-      featured: true,
-    }
-  ] as Project[],
+      stackIcons: ['RC', 'TS', 'VT', 'DF'],
+      featureChips: ['479 Lecture Slides', 'CIT 245 & CIT 220', 'Keyboard Deck', 'LocalStorage'],
+      liveUrl: 'https://ben-bacs.github.io/bsit4b-nis-st/',
+      liveLabel: 'Live Portal',
+      repoUrl: 'https://github.com/ben-bacs/bsit4b-nis-st',
+      preview: {
+        header: 'decks/cit245-cyberforensics.ts',
+        tag: '479 SLIDES · LIVE',
+        lines: [
+          { prefix: 'DECK', text: 'CIT 245 Cyberforensics + CIT 220 Info Assurance 2', tone: 'accent' },
+          { prefix: '+', text: '479 indexed slides · keyboard [<-] [->] navigation', tone: 'add' },
+          { prefix: '✓', text: 'saved progress synced to window.localStorage', tone: 'ok' },
+          { prefix: '↗', text: 'ben-bacs.github.io/bsit4b-nis-st', tone: 'muted' },
+        ],
+      },
+    },
+  ] as BlueprintProject[],
 
-  services: [
-    {
-      id: "backend-architecture",
-      title: "Backend & API Engineering",
-      icon: "Code2",
-      description: "Engineering secure backend authorization, strict API contracts, modular monoliths (Java/Spring Boot, Python/FastAPI, Node.js, Go), and PostgreSQL schemas.",
-      highlights: ["TypeScript, Next.js & Node.js", "Java 25 (Spring Boot 4) & Python", "PostgreSQL & SQLAlchemy / Prisma", "Automated Browser & PR Testing"],
-    },
-    {
-      id: "linux-network-systems",
-      title: "Network & Security Assessments",
-      icon: "ShieldCheck",
-      description: "Leading Nessus-based vulnerability assessments, upstream SSRF/tenant-isolation defense, digital forensics artifact extraction, and CCNA network architecture.",
-      highlights: ["Nessus Vulnerability Assessments", "PostgreSQL RLS & Tenant Isolation", "Digital Forensics & Evidence Integrity", "CCNA 1–2 & Network Defense"],
-    },
-    {
-      id: "fullstack-development",
-      title: "Full-Stack & Mobile Systems",
-      icon: "Layers",
-      description: "Building cross-platform Flutter/Dart mobile apps and responsive React/Next.js web applications backed by regression test suites and clean state architecture.",
-      highlights: ["React 19, Next.js & TypeScript", "Flutter & Dart Mobile Apps", "FastAPI & Firebase Integration", "End-to-End Regression Suites"],
-    },
-    {
-      id: "edge-offline-systems",
-      title: "Systems Servicing & Edge Infra",
-      icon: "Cpu",
-      description: "TESDA CSS NC II certified hardware/network servicing combined with Linux CLI administration, Cloudflare Workers/D1 edge storage, and native Rust/Tauri apps.",
-      highlights: ["TESDA CSS NC II Certified", "Linux CLI & Git/GitHub Workflows", "Cloudflare Workers & Edge D1", "Rust / Tauri 2 & WebGL2 DSP"],
-    },
-  ] as Service[],
-
-  skills: [
-    { name: "Backend & APIs (TypeScript, Node.js, Python, Java/Spring Boot)", level: 95, category: "Development" },
-    { name: "Database Engineering & RLS (PostgreSQL, Supabase, SQLAlchemy)", level: 93, category: "Data" },
-    { name: "Network & Security (TCP/IP, Subnetting, Nessus, Forensics)", level: 92, category: "Security" },
-    { name: "Frontend & Mobile (React, Next.js, Dart / Flutter, Tailwind)", level: 90, category: "Frontend" },
-    { name: "Testing & Tooling (Automated Tests, Git/GitHub, Linux CLI)", level: 91, category: "Tooling" },
-    { name: "Systems Servicing & Cisco Routing/Switching (CSS NC II, CCNA)", level: 89, category: "Infrastructure" },
-  ] as Skill[],
-
-  testimonials: [
-    {
-      id: "1",
-      name: "Chris Apin",
-      role: "Lead Project Manager",
-      company: "Apex Tech Logistics",
-      avatar: "./Chris Apin.jpg",
-      quote: "Benedict delivers exceptional backend architecture. His network security background gives us total peace of mind regarding database efficiency and API security.",
-    },
-    {
-      id: "2",
-      name: "Richyll Gabinera",
-      role: "Operations Director",
-      company: "CarePulse Health",
-      avatar: "./Richyll Gabinera.jpg",
-      quote: "The clinic management system Benedict architected streamlined our appointment workflows and record security. Clean code, strict permissions, and reliable delivery.",
-    },
-    {
-      id: "3",
-      name: "Jaspher Ebarle",
-      role: "Lead Systems Architect",
-      company: "Veloce Infrastructure Group",
-      avatar: "./Jaspher Ebarle.jpg",
-      quote: "The academic management system Benedict architected handled high-concurrency operations flawlessly. Rock-solid database consistency and exemplary clean architecture.",
-    },
-  ] as Testimonial[],
-
-  footer: {
-    ctaHeading: "Have a project or internship opportunity?",
-    ctaSubtext: "I'm open to IT internship / OJT roles, backend & full-stack engineering collaborations, and security assessment projects.",
-    coreStack: [
-      "TypeScript / Next.js / Node.js",
-      "Python / FastAPI / SQLAlchemy",
-      "Java 25 / Spring Boot 4",
-      "Dart / Flutter & React 19",
-      "PostgreSQL 17 / Supabase RLS",
-      "Tenable Nessus & Forensics",
-      "Rust / Tauri 2.2 / WebGL2",
-      "Linux CLI, CCNA & CSS NC II",
+  colophon: {
+    craftedBy: '@ben-bacs',
+    build: 'v3.0.0',
+    date: '2026-11-26',
+    aesthetic: 'Technical Blueprint',
+    deployedOn: 'GitHub Pages',
+    sourceRepo: 'https://github.com/ben-bacs/Portfolio',
+    license: 'MIT License',
+    credentials: ['TESDA CSS NC II', 'Cisco CCNA 1-2', 'Cisco Network Defense'],
+    stackList: [
+      'react@18.3.1',
+      'typescript@5.6.2',
+      'vite@6.4.3',
+      'framer-motion@11.15',
+      'tailwindcss@3.4.17',
     ],
-  }
+  },
 };

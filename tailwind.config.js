@@ -8,41 +8,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: {
-          main: '#0B0B0C',
-          dark: '#0D0D0E',
-          surface: '#161618',
-          card: '#161618',
-          subtle: '#1f1f22',
+        accent: {
+          DEFAULT: '#6495ED',
+          hover: '#5281D6',
+          bright: '#72A0EE',
         },
-        border: {
-          subtle: '#27272A',
-          hover: '#3F3F46',
-          gold: 'rgba(229, 195, 150, 0.3)',
+        canvas: {
+          light: '#FFFFFF',
+          dark: '#000000',
         },
-        gold: {
-          DEFAULT: '#E5C396',
-          hover: '#D4A373',
-          light: '#F3E5D0',
-          dark: '#B88E56',
-          glow: 'rgba(229, 195, 150, 0.15)',
+        surface: {
+          light: '#FAFAFA',
+          dark: '#0A0A0A',
+          elevated: '#111113',
         },
-        text: {
-          main: '#FFFFFF',
-          muted: '#A1A1AA',
-          dim: '#71717A',
-        }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['"Instrument Serif"', '"Playfair Display"', 'Georgia', 'serif'],
-      },
-      animation: {
-        'spin-slow': 'spin 20s linear infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        sans: ['"Geist"', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        doto: ['"Doto"', '"Geist Mono"', 'monospace'],
+        caveat: ['"Caveat"', 'cursive'],
       },
     },
   },
   plugins: [],
-}
-
+};
